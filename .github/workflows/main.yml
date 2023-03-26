@@ -4,13 +4,14 @@ on:
   push:
     branches:
       - master
+      - development
 
   pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Ruby ${{ matrix.ruby }}
+    name: Main Pipeline
     strategy:
       matrix:
         ruby:
@@ -25,3 +26,8 @@ jobs:
         bundler-cache: true
     - name: Run the default task
       run: bundle exec rake
+    - name: Install dependencies
+      run: make install
+
+    - name: Run Rubocop
+      run: make lint
