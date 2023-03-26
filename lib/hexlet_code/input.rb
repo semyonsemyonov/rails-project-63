@@ -10,15 +10,17 @@ module HexletCode
     TEXTAREA_ELEMENT = "textarea"
     REJECTED_ATTRIBUTES = %w[as].freeze
 
-    def initialize(name, attributes = {})
+    def initialize(name, default_value, attributes = {})
+      @default_value = default_value
       @element = select_element_type(attributes[:as])
-      @attributes = collect_input_attributes(attributes.merge!(name:))
+      @attributes = prepare_input_attributes(attributes.merge!(name:))
     end
 
     attr_accessor :attributes, :element
 
-    def collect_input_attributes(attributes)
+    def prepare_input_attributes(attributes)
       REJECTED_ATTRIBUTES.map { |rejected| attributes.delete(rejected.to_sym) }
+      attributes["value"] = @default_value if @default_value
 
       attributes
     end
@@ -27,7 +29,9 @@ module HexletCode
       return DEFAULT_FORM_ELEMENT unless element
 
       if element == :text
-        @content = proc { DEFAULT_TEXT }
+        value = @default_value
+        @content = proc { value || DEFAULT_TEXT }
+        @default_value = nil
 
         return TEXTAREA_ELEMENT
       end

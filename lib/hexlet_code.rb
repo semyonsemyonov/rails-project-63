@@ -10,5 +10,7 @@ module HexletCode
 
   def self.form_for(entity, opts = {}, &block)
     FormBuilder.new(entity, opts).build(&block)
+  rescue Error
+    HexletCode::Error
   end
 end
