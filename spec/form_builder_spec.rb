@@ -35,6 +35,16 @@ RSpec.describe HexletCode do
 
       expect(form).to eq("<form action=\"/users\" method=\"post\"><input class=\"user-input\" name=\"name\"></form>")
     end
+
+    it "create form with 2 inputs" do
+      user = User.new(name: "rob")
+      form = HexletCode.form_for(user, { url: "/users" }) do |f|
+        f.input :name, class: "1"
+        f.input :job, class: "2"
+      end
+
+      expect(form).to include("<input class=\"1\" name=\"name\"><input class=\"2\" name=\"job\">")
+    end
   end
 end
 
