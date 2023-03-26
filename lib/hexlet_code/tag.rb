@@ -3,7 +3,6 @@
 module HexletCode
   # Service to build tags
   class Tag
-
     def initialize(name, params)
       @name = name
       @attributes = params.map { |key, value| " #{key}=\"#{value}\"" }.sort.join
