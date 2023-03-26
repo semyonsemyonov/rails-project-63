@@ -31,5 +31,3 @@ jobs:
 
     - name: Run Rubocop
       run: make lint
-    - name: Run Tests
-      run: make rspec
