@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Ruby ${{ matrix.ruby }}
+    name: Main Pipeline
     strategy:
       matrix:
         ruby:
@@ -32,4 +32,4 @@ jobs:
     - name: Run Rubocop
       run: make lint
     - name: Run Tests
-      run: make test
+      run: make rspec
