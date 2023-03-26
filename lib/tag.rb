@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module HexletCode
-
   # Service to build tags
   class Tag
     def self.build(name, **params)
