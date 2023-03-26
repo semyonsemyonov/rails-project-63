@@ -9,6 +9,6 @@ module HexletCode
   # Your code goes here...
 
   def self.form_for(entity, opts = {}, &block)
-    FormBuilder.new(entity, opts, &block).build
+    FormBuilder.new(entity, opts).build(&block)
   end
 end

@@ -12,13 +12,15 @@ module HexletCode
     def initialize(entity, attributes = {})
       @entity = entity
       @attributes = attributes
-      @content = yield(self) if block_given?
+      @fields = []
     end
 
     attr_accessor :entity, :attributes, :content
 
     def input(name, attributes = {})
-      Input.new(name, attributes).build
+      @fields << Input.new(name, attributes).build
+
+      @fields.join
     end
 
     def verify_entity_fields(name)
@@ -28,7 +30,7 @@ module HexletCode
     def build
       action = attributes[:url] || "#"
       Tag.new(FORM_ELEMENT, method: DEFAULT_METHOD, action:).build do
-        @content
+        yield(self) if block_given?
       end
     end
   end
