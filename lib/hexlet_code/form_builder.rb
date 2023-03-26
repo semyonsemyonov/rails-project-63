@@ -18,13 +18,18 @@ module HexletCode
     attr_accessor :entity, :attributes, :content
 
     def input(name, attributes = {})
-      @fields << Input.new(name, attributes).build
+      verify_input_name(name)
+      @fields << Input.new(name, default_value(name), attributes).build
 
       @fields.join
     end
 
-    def verify_entity_fields(name)
-      entity.send(name)
+    def verify_input_name(name)
+      raise HexletCode::Error unless entity.to_h.key?(name)
+    end
+
+    def default_value(name)
+      entity[name]
     end
 
     def build
