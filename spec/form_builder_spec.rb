@@ -72,8 +72,7 @@ RSpec.describe HexletCode do
       user = User.new(name: "rob", job: "developer")
       form = HexletCode.form_for(user, { url: "/users" }) { |f| f.input :job, as: :text }
 
-      expect(form).to eq("<form action=\"/users\" method=\"post\"><textarea name=\"job\">developer</textarea></form>"
-                      )
+      expect(form).to eq("<form action=\"/users\" method=\"post\"><textarea name=\"job\">developer</textarea></form>")
     end
   end
 end
