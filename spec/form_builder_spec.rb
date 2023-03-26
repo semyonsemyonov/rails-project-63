@@ -3,7 +3,7 @@
 User = Struct.new(:name, :job, :gender, keyword_init: true)
 
 RSpec.describe HexletCode do
-  context "form_for" do
+  context "generate form" do
     it "create empty form" do
       user = User.new(name: "rob")
       form = HexletCode.form_for user
@@ -17,7 +17,11 @@ RSpec.describe HexletCode do
 
       expect(form).to eq("<form action=\"/users\" method=\"post\"></form>")
     end
+  end
+end
 
+RSpec.describe HexletCode do
+  context "generate input" do
     it "create form with input" do
       user = User.new(name: "rob")
       form = HexletCode.form_for(user, { url: "/users" }) { |f| f.input :name }
@@ -31,14 +35,22 @@ RSpec.describe HexletCode do
 
       expect(form).to eq("<form action=\"/users\" method=\"post\"><input class=\"user-input\" name=\"name\"></form>")
     end
+  end
+end
 
+RSpec.describe HexletCode do
+  context "generate textarea" do
     it "create form with textarea" do
       user = User.new(name: "rob")
       form = HexletCode.form_for(user, { url: "/users" }) { |f| f.input :job, as: :text }
 
       expect(form).to eq("<form action=\"/users\" method=\"post\"><textarea name=\"job\">hexlet</textarea></form>")
     end
+  end
+end
 
+RSpec.describe HexletCode do
+  context "wrong arguments" do
     it "create form for undefined field with exception" do
       user = User.new(name: "rob")
       HexletCode.form_for(user, { url: "/users" }) { |f| f.input :age, as: :text }

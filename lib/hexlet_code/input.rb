@@ -31,7 +31,7 @@ module HexletCode
 
         return TEXTAREA_ELEMENT
       end
-        element
+      element
     end
 
     def build
