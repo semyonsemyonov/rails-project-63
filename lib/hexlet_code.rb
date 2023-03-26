@@ -6,6 +6,7 @@ module HexletCode
   class Error < StandardError; end
   # Your code goes here...
 
+  # Service to build tags
   class Tag
     def self.build(name, **params)
       attributes = params.map { |key, value| " #{key}=\"#{value}\"" }.join
