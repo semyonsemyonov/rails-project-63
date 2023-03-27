@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "tag"
-require_relative "input"
-
 module HexletCode
   # Service fot generation html form
   class FormBuilder
