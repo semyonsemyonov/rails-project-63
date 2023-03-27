@@ -10,10 +10,18 @@ module HexletCode
 
     attr_accessor :attributes, :name
 
-    def build
-      return "<#{name}#{attributes}>" unless block_given?
+    def open_tag
+      "<#{name}#{attributes}>"
+    end
 
-      "<#{name}#{attributes}>#{yield}</#{name}>"
+    def close_tag
+      "</#{name}>"
+    end
+
+    def build
+      return open_tag unless block_given?
+
+      "#{open_tag}#{yield}#{close_tag}"
     end
   end
 end
