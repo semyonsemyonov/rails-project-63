@@ -2,11 +2,11 @@
 
 # Form generator
 module HexletCode
-  autoload(:FormBuilder, "./hexlet_code/form_builder")
-  autoload(:Input, "./hexlet_code/form_builder")
-  autoload(:Submit, "./hexlet_code/form_builder")
-  autoload(:Tag, "./hexlet_code/form_builder")
-  autoload(:VERSION, "./hexlet_code/version")
+  autoload(:FormBuilder, "hexlet_code/form_builder")
+  autoload(:Input, "hexlet_code/form_builder")
+  autoload(:Submit, "hexlet_code/form_builder")
+  autoload(:Tag, "hexlet_code/form_builder")
+  autoload(:VERSION, "hexlet_code/version")
 
   class Error < StandardError; end
   # Your code goes here...
