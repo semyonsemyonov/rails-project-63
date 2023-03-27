@@ -13,7 +13,7 @@ module HexletCode
       @default_value = default_value
       @element = select_element_type(attributes[:as])
       @attributes = prepare_input_attributes(attributes.merge!(name:))
-      @label_attributes = {for: name}
+      @label_attributes = { for: name }
       @label_content = proc { name.capitalize }
       @fields = []
     end
