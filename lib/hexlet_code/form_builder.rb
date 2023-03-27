@@ -3,10 +3,6 @@
 module HexletCode
   # Service fot generation html form
   class FormBuilder
-    autoload(:Tag, "tag")
-    autoload(:Input, "input")
-    autoload(:Submit, "submit")
-
     FORM_ELEMENT = "form"
     DEFAULT_METHOD = "post"
 
