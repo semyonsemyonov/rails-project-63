@@ -35,7 +35,9 @@ module HexletCode
 
     def build
       action = attributes[:url] || "#"
-      Tag.new(FORM_ELEMENT, method: DEFAULT_METHOD, action:).build do
+      method = attributes[:method] || DEFAULT_METHOD
+
+      Tag.new(FORM_ELEMENT, method:, action:).build do
         yield(self) if block_given?
       end
     end
