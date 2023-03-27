@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "tag"
-require_relative "input"
-
 module HexletCode
   # Service fot generation html form
   class FormBuilder
@@ -22,6 +19,10 @@ module HexletCode
       @fields << Input.new(name, default_value(name), attributes).build
 
       @fields.join
+    end
+
+    def submit(name = nil, attributes = {})
+      Submit.new(name, attributes).build
     end
 
     def verify_input_name(name)

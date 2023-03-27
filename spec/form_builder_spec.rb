@@ -76,3 +76,26 @@ RSpec.describe HexletCode do
     end
   end
 end
+
+RSpec.describe HexletCode do
+  context "generate submit" do
+    it "with default value" do
+      user = User.new(name: "rob")
+      form = HexletCode.form_for(user, { url: "/users" }) do |f|
+        f.input :name
+        f.submit
+      end
+
+      expect(form).to eq("<form action=\"/users\" method=\"post\"><input name=\"Save\" type=\"submit\"></form>")
+    end
+
+    it "with override parameters" do
+      user = User.new(name: "rob", job: "developer")
+      form = HexletCode.form_for(user, { url: "/users" }) do |f|
+        f.input :name
+        f.submit :Wow
+      end
+      expect(form).to eq("<form action=\"/users\" method=\"post\"><input name=\"Wow\" type=\"submit\"></form>")
+    end
+  end
+end
