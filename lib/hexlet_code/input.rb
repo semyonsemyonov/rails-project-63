@@ -3,6 +3,8 @@
 module HexletCode
   # Generate input
   class Input
+    autoload(:Tag, "tag")
+
     DEFAULT_FORM_ELEMENT = "input"
     DEFAULT_TEXT = "hexlet"
     TEXTAREA_ELEMENT = "textarea"

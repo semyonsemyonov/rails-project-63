@@ -3,6 +3,8 @@
 module HexletCode
   # Generate submit
   class Submit
+    autoload(:Tag, "tag")
+
     DEFAULT_FORM_ELEMENT = "input"
     DEFAULT_TYPE = "submit"
     DEFAULT_NAME = "Save"
