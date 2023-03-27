@@ -1,44 +1,35 @@
 [![Ruby](https://github.com/semyonsemyonov/rails-project-63/actions/workflows/main.yml/badge.svg)](https://github.com/semyonsemyonov/rails-project-63/actions/workflows/main.yml)
 # HexletCode
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hexlet_code`. To experiment with that code, run `bin/console` for an interactive prompt.
+HexletCode is a Ruby gem that generates HTML forms based on Ruby code. It simplifies the process of creating forms by allowing developers to write Ruby code to define the form fields and their attributes. The generated HTML is customizable and can be easily integrated into any web application.
 
-TODO: Delete this and the text above, and describe your gem
+# How to use
 
-## Installation
-
-Add this line to your application's Gemfile:
+Just call the code block with any parameters
 
 ```ruby
-gem 'hexlet_code'
+User = Struct.new(:name, :job, keyword_init: true)
+user = User.new job: 'hexlet'
+
+HexletCode.form_for user do |f|
+  f.input :name
+  f.input :job
+  f.submit
+end
+
+# <form action="#" method="post">
+#   <label for="name">Name</label>
+#   <input name="name" type="text">
+#   <label for="job">Job</label>
+#   <input name="job" type="text" value="hexlet">
+#   <input type="submit" value="Save">
+# </form>
 ```
 
-And then execute:
+# How to run
 
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install hexlet_code
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/hexlet_code. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/hexlet_code/blob/master/CODE_OF_CONDUCT.md).
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the HexletCode project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/hexlet_code/blob/master/CODE_OF_CONDUCT.md).
+``` bash
+make install  #install dependencies
+make lint     #run rubocop
+make test     #run rspec
+```
