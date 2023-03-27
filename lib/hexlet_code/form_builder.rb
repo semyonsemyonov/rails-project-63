@@ -3,10 +3,10 @@
 module HexletCode
   # Service fot generation html form
   class FormBuilder
-    FORM_ELEMENT = "form"
-    DEFAULT_METHOD = "post"
-    DEFAULT_URL = "#"
-
+    FORM_ELEMENT = 'form'
+    DEFAULT_METHOD = 'post'
+    DEFAULT_URL = '#'
+    REJECTED_ATTRIBUTES = %w[url].freeze
     def initialize(entity, attributes = {})
       @entity = entity
       @attributes = prepare_form_attributes(attributes)
@@ -17,7 +17,8 @@ module HexletCode
 
     def prepare_form_attributes(attributes)
       attributes[:action] = attributes[:url] || DEFAULT_URL
-      attributes[:method] || DEFAULT_METHOD
+      attributes[:method] = attributes[:method] || DEFAULT_METHOD
+      REJECTED_ATTRIBUTES.map { |rejected| attributes.delete(rejected.to_sym) }
 
       attributes
     end

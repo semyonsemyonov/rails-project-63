@@ -3,12 +3,12 @@
 module HexletCode
   # Generate input
   class Input
-    DEFAULT_FORM_ELEMENT = "input"
-    DEFAULT_TEXT = "hexlet"
-    TEXTAREA_ELEMENT = "textarea"
+    DEFAULT_FORM_ELEMENT = 'input'
+    DEFAULT_TEXT = 'hexlet'
+    TEXTAREA_ELEMENT = 'textarea'
     REJECTED_ATTRIBUTES = %w[as].freeze
-    DEFAULT_FORM_LABEL = "label"
-    DEFAULT_TYPE = "text"
+    DEFAULT_FORM_LABEL = 'label'
+    DEFAULT_TYPE = 'text'
 
     def initialize(name, default_value, attributes = {})
       @default_value = default_value
@@ -23,8 +23,8 @@ module HexletCode
 
     def prepare_input_attributes(attributes)
       REJECTED_ATTRIBUTES.map { |rejected| attributes.delete(rejected.to_sym) }
-      attributes["value"] = @default_value if @default_value
-      attributes["type"] = DEFAULT_TYPE
+      attributes['value'] = @default_value if @default_value
+      attributes['type'] = DEFAULT_TYPE
       attributes
     end
 

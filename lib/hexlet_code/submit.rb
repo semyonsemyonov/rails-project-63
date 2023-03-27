@@ -3,19 +3,19 @@
 module HexletCode
   # Generate submit
   class Submit
-    DEFAULT_FORM_ELEMENT = "input"
-    DEFAULT_TYPE = "submit"
-    DEFAULT_VAlUE = "Save"
+    DEFAULT_FORM_ELEMENT = 'input'
+    DEFAULT_TYPE = 'submit'
+    DEFAULT_VALUE = 'Save'
 
-    def initialize(name, attributes = {})
-      @attributes = prepare_submit_attributes(attributes.merge!(name:))
+    def initialize(value, attributes = {})
+      @attributes = prepare_submit_attributes(attributes.merge!(value:))
     end
 
     attr_accessor :attributes
 
     def prepare_submit_attributes(attributes)
       attributes[:type] = DEFAULT_TYPE
-      attributes[:value] = attributes[:name] || DEFAULT_VAlUE
+      attributes[:value] ||= DEFAULT_VALUE
 
       attributes
     end
