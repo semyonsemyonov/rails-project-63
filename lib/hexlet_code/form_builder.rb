@@ -24,6 +24,10 @@ module HexletCode
       @fields.join
     end
 
+    def submit(name = nil, attributes = {})
+      Submit.new(name, attributes).build
+    end
+
     def verify_input_name(name)
       raise HexletCode::Error unless entity.to_h.key?(name)
     end
