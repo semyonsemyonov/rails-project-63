@@ -99,5 +99,3 @@ RSpec.describe HexletCode do
     end
   end
 end
-
-
