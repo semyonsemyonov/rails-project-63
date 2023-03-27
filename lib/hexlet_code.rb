@@ -2,17 +2,17 @@
 
 # Form generator
 module HexletCode
-  autoload(:FormBuilder, "../lib/hexlet_code/form_builder")
-  autoload(:Input, "../lib/hexlet_code/form_builder")
-  autoload(:Submit, "../lib/hexlet_code/form_builder")
-  autoload(:Tag, "../lib/hexlet_code/form_builder")
-  autoload(:VERSION, "../lib/hexlet_code/version")
+  autoload(:FormBuilder, 'hexlet_code/form_builder')
+  autoload(:Input, 'hexlet_code/input')
+  autoload(:Submit, 'hexlet_code/submit')
+  autoload(:Tag, 'hexlet_code/tag')
+  autoload(:VERSION, 'hexlet_code/version')
 
   class Error < StandardError; end
   # Your code goes here...
 
-  def self.form_for(entity, opts = {}, &block)
-    FormBuilder.new(entity, opts).build(&block)
+  def self.form_for(entity, opts = {}, &)
+    FormBuilder.new(entity, opts).build(&)
   rescue Error
     HexletCode::Error
   end
