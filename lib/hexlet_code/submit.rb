@@ -5,7 +5,7 @@ module HexletCode
   class Submit
     DEFAULT_FORM_ELEMENT = "input"
     DEFAULT_TYPE = "submit"
-    DEFAULT_NAME = "Save"
+    DEFAULT_VAlUE = "Save"
 
     def initialize(name, attributes = {})
       @attributes = prepare_submit_attributes(attributes.merge!(name:))
@@ -15,7 +15,7 @@ module HexletCode
 
     def prepare_submit_attributes(attributes)
       attributes[:type] = DEFAULT_TYPE
-      attributes[:name] = attributes[:name] || DEFAULT_NAME
+      attributes[:value] = attributes[:name] || DEFAULT_VAlUE
 
       attributes
     end
