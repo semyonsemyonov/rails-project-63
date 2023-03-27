@@ -7,6 +7,7 @@ module HexletCode
     DEFAULT_METHOD = 'post'
     DEFAULT_URL = '#'
     REJECTED_ATTRIBUTES = %w[url].freeze
+
     def initialize(entity, attributes = {})
       @entity = entity
       @attributes = prepare_form_attributes(attributes)
@@ -25,7 +26,7 @@ module HexletCode
 
     def input(name, attributes = {})
       verify_input_name(name)
-      @fields << Input.new(name, default_value(name), attributes).build
+      @fields << Input.new(name, value_from_entity(name), attributes).build
 
       @fields.join
     end
@@ -40,7 +41,7 @@ module HexletCode
       raise NoMethodError unless entity.to_h.key?(name)
     end
 
-    def default_value(name)
+    def value_from_entity(name)
       entity[name]
     end
 

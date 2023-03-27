@@ -9,9 +9,10 @@ module HexletCode
 
     def initialize(value, attributes = {})
       @attributes = prepare_submit_attributes(attributes.merge!(value:))
+      @element = DEFAULT_FORM_ELEMENT
     end
 
-    attr_accessor :attributes
+    attr_accessor :attributes, :element
 
     def prepare_submit_attributes(attributes)
       attributes[:type] = DEFAULT_TYPE
@@ -21,7 +22,7 @@ module HexletCode
     end
 
     def build
-      Tag.new(DEFAULT_FORM_ELEMENT, attributes).build
+      Tag.new(element, attributes).build
     end
   end
 end
