@@ -22,7 +22,9 @@ module HexletCode
     end
 
     def submit(name = nil, attributes = {})
-      Submit.new(name, attributes).build
+      @fields << Submit.new(name, attributes).build
+
+      @fields.join
     end
 
     def verify_input_name(name)
@@ -35,7 +37,9 @@ module HexletCode
 
     def build
       action = attributes[:url] || "#"
-      Tag.new(FORM_ELEMENT, method: DEFAULT_METHOD, action:).build do
+      method = attributes[:method] || DEFAULT_METHOD
+
+      Tag.new(FORM_ELEMENT, method:, action:).build do
         yield(self) if block_given?
       end
     end
