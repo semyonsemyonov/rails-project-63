@@ -22,7 +22,9 @@ module HexletCode
     end
 
     def submit(name = nil, attributes = {})
-      Submit.new(name, attributes).build
+      @fields << Submit.new(name, attributes).build
+
+      @fields.join
     end
 
     def verify_input_name(name)
