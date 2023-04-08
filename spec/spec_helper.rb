@@ -6,7 +6,7 @@ $LOAD_PATH << path
 Dir[File.join(path, '**/*.rb')].each { |file| require file }
 
 module SpecHelpers
-  def fixture(name)
+  def get_fixture(name)
     File.read(Dir['spec/fixtures/*'].find { |f| File.basename(f, '.html') == name })
   end
 end
