@@ -10,11 +10,12 @@ module HexletCode
 
     def initialize(entity, attributes = {})
       @entity = entity
+      @name = FORM_ELEMENT
       @attributes = prepare_form_attributes(attributes)
       @fields = []
     end
 
-    attr_accessor :entity, :attributes, :content
+    attr_accessor :name, :entity, :attributes, :content, :fields
 
     def prepare_form_attributes(attributes)
       attributes[:action] = attributes[:url] || DEFAULT_URL
@@ -26,15 +27,12 @@ module HexletCode
 
     def input(name, attributes = {})
       verify_input_name(name)
-      @fields << Input.new(name, value_from_entity(name), attributes).build
-
-      @fields.join
+      fields << Label.new(name, nil)
+      fields << Input.new(name, attributes.merge(value: value_from_entity(name)))
     end
 
     def submit(name = nil, attributes = {})
-      @fields << Submit.new(name, attributes).build
-
-      @fields.join
+      fields << Submit.new(name, attributes)
     end
 
     def verify_input_name(name)
@@ -43,12 +41,6 @@ module HexletCode
 
     def value_from_entity(name)
       entity[name]
-    end
-
-    def build
-      Tag.new(FORM_ELEMENT, attributes).build do
-        yield(self) if block_given?
-      end
     end
   end
 end
