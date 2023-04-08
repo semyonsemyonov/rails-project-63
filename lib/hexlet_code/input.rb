@@ -8,7 +8,7 @@ module HexletCode
     DEFAULT_FORM_ELEMENT = 'input'
     DEFAULT_TEXT = 'hexlet'
     TEXTAREA_ELEMENT = 'textarea'
-    ALLOWED_ATTRIBUTES = %w[class type value name].freeze
+    ALLOWED_ATTRIBUTES = %w[class type value name rows cols].freeze
     DEFAULT_TYPE = 'text'
 
     def initialize(name, params = {})
