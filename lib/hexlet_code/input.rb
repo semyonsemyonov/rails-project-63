@@ -18,7 +18,8 @@ module HexletCode
     end
 
     def prepare_input_attributes(attributes)
-      attributes['type'] = DEFAULT_TYPE
+      attributes[:type] = DEFAULT_TYPE
+      attributes[:value] = attributes[:entity_value] if attributes[:entity_value]
       attributes.select do |key, attr_val|
         next if name == TEXTAREA_ELEMENT && key == :value
 

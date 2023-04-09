@@ -28,7 +28,7 @@ module HexletCode
     def input(name, attributes = {})
       verify_input_name(name)
       fields << Label.new(name, nil)
-      fields << Input.new(name, attributes.merge(value: value_from_entity(name)))
+      fields << Input.new(name, attributes.merge(entity_value: value_from_entity(name)))
     end
 
     def submit(name = nil, attributes = {})
