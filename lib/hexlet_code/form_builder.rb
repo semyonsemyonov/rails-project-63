@@ -6,7 +6,7 @@ module HexletCode
     FORM_ELEMENT = 'form'
     DEFAULT_METHOD = 'post'
     DEFAULT_URL = '#'
-    REJECTED_ATTRIBUTES = %w[url].freeze
+    ALLOWED_ATTRIBUTES = %w[action method].freeze
 
     def initialize(entity, attributes = {})
       @entity = entity
@@ -20,9 +20,10 @@ module HexletCode
     def prepare_form_attributes(attributes)
       attributes[:action] = attributes[:url] || DEFAULT_URL
       attributes[:method] = attributes[:method] || DEFAULT_METHOD
-      REJECTED_ATTRIBUTES.map { |rejected| attributes.delete(rejected.to_sym) }
 
-      attributes
+      attributes.select do |key, attr_val|
+        ALLOWED_ATTRIBUTES.include?(key.to_s) && !attr_val.to_s.empty?
+      end
     end
 
     def input(name, attributes = {})
