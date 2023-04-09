@@ -6,7 +6,7 @@ module HexletCode
     FORM_ELEMENT = 'form'
     DEFAULT_METHOD = 'post'
     DEFAULT_URL = '#'
-    ALLOWED_ATTRIBUTES = %w[action method].freeze
+    ALLOWED_ATTRIBUTES = %w[action method class].freeze
 
     def initialize(entity, attributes = {})
       @entity = entity
