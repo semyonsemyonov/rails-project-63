@@ -24,10 +24,10 @@ module HexletCode
 
     def build_textarea
       attributes = params.except(:as, :identifier, :value)
-      name = value_from_entity(params[:identifier])
-      attributes[:name] = name || params[:identifier]
+      value = value_from_entity(params[:identifier]) || params[:value]
+      attributes[:name] = params[:identifier]
 
-      Textarea.new(params[:identifier], params[:value], attributes)
+      Textarea.new(params[:identifier], value, attributes)
     end
 
     def build
