@@ -2,8 +2,10 @@
 
 module HexletCode
   class Renderer
+    class UnknownTypeOfObject < StandardError; end
+
     def initialize(form)
-      raise 'Supports only FormBuilder objects' unless form.is_a?(HexletCode::FormBuilder)
+      raise UnknownTypeOfObject unless form.is_a?(HexletCode::FormBuilder)
 
       @form = form
       @output = ''

@@ -3,10 +3,16 @@
 module HexletCode
   # Service to build tags
   class Tag
-    def initialize(name, _attributes)
-      @name = name
+    DEFAULT_TYPE = 'text'
+    DEFAULT_TAG = 'input'
+
+    def initialize(identifier, content, params)
+      @content = content
+      @name = DEFAULT_TAG
+      @attributes = params
+      @identifier = identifier
     end
 
-    attr_accessor :attributes, :name, :content
+    attr_accessor :name, :attributes, :identifier, :content
   end
 end

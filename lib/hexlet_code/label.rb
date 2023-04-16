@@ -2,15 +2,14 @@
 
 module HexletCode
   # Generate input
-  class Label < HexletCode::Tag
-    DEFAULT_LABEL_ELEMENT = 'label'
-    DEFAULT_TYPE = 'text'
+  class Label < Tag
+    LABEL_ELEMENT = 'label'
 
-    def initialize(name, _params)
+    def initialize(identifier, content, _params)
       super
-      @attributes = { for: name }
-      @content = name.to_s.capitalize
-      @name = DEFAULT_LABEL_ELEMENT
+      @attributes = { for: identifier }
+      @content = content || identifier.to_s.capitalize
+      @name = LABEL_ELEMENT
     end
   end
 end
